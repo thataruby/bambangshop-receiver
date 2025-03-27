@@ -85,5 +85,7 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. We use RwLock<> because it lets multiple parts of the program read data at the same time while still allowing one part to update it when needed. This works better in situations where reading happens more often than writing, like with our list of notifications. If we used Mutex<>, every read and write would block everything else, making the program slower.
+2. Unlike Java, where we can change static variables whenever we want, Rust makes sure they are safe to use in multi-threaded programs. lazy_static helps by letting us create static values like lists or maps while still keeping them safe to read and update. It makes sure everything is set up properly before we use it and prevents errors that could happen with direct modifications.
 
 #### Reflection Subscriber-2
